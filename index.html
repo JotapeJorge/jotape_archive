@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jotapê Jorge</title>
+  <title>Jornalista Perdido</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Merriweather:wght@300;400;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,7 +36,7 @@
       align-items: center;
     }
     .nav-name img {
-      height: 80px;
+      height: 40px;
       width: auto;
       display: block;
     }
@@ -186,10 +186,7 @@
       padding: 6rem 2.5rem;
     }
     .contato-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
+      max-width: 600px;
     }
     .contato-hed {
       font-family: var(--serif);
@@ -199,7 +196,7 @@
       line-height: 1.2;
       margin-bottom: 3rem;
     }
-    .contato-hed em { font-style: italic; color: #7aabdb; }
+    .contato-hed em { font-style: italic; color: #fff; }
     .contato-list { display: flex; flex-direction: column; }
     .cl {
       display: flex;
@@ -284,13 +281,22 @@
       justify-content: space-between;
     }
     .footer-name {
-      font-family: var(--serif);
-      font-size: .9rem;
-      color: rgba(255,255,255,.3);
       display: flex; align-items: center; gap: .6rem;
       text-decoration: none;
     }
-    .footer-name img { height: 22px; opacity: .35; }
+    .footer-name .fn-serif {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.3);
+    }
+    .footer-name .fn-sans {
+      font-family: var(--cond);
+      font-size: .95rem;
+      font-weight: 400;
+      letter-spacing: .06em;
+      color: rgba(255,255,255,.3);
+    }
     .footer-copy {
       font-size: .62rem;
       font-weight: 600;
@@ -317,7 +323,7 @@
   <nav>
     <a href="#" class="nav-name">
       <!-- Troque "logo.png" pelo nome do seu arquivo de imagem -->
-      <img src="cabeçalho_site.png" alt="Jotapê Jorge" />
+      <img src="logo.png" alt="Jornalista Perdido" />
     </a>
     <ul class="nav-links">
       <li><a href="#works">Portfólio</a></li>
@@ -458,42 +464,18 @@
           </a>
         </div>
       </div>
-      <form id="contactForm">
-        <div class="form-2col">
-          <div><label>Nome</label><input type="text" placeholder="Seu nome" required /></div>
-          <div><label>E-mail</label><input type="email" placeholder="seu@email.com" required /></div>
-        </div>
-        <div>
-          <label>Projeto</label>
-          <select>
-            <option value="">Selecione...</option>
-            <option>Canal no YouTube</option>
-            <option>Redes Sociais</option>
-            <option>Vídeo Institucional</option>
-            <option>Documentário</option>
-            <option>Outro</option>
-          </select>
-        </div>
-        <div>
-          <label>Mensagem</label>
-          <textarea placeholder="Conta sobre o projeto..." required></textarea>
-        </div>
-        <button type="submit" class="btn-send">Enviar</button>
-        <p class="form-ok" id="formOk">✓ Mensagem enviada. Retorno em breve.</p>
-      </form>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
     <a href="#" class="footer-name">
-      <img src="dingbat_azul_redondo.png" alt="" />
-      Jornalista Perdido.
+      <span class="fn-serif">Jotapê</span>
+      <span class="fn-sans">Jorge</span>
     </a>
     <p class="footer-copy">© 2025</p>
   </footer>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('.btn-send')
+  <script>
+    // reservado para futuras interações
+  </script>
