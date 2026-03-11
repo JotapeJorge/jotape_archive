@@ -23,6 +23,7 @@
       font-style: italic;
     }
 
+    html, body { overflow-x: hidden; }
     body { background: #fff; color: var(--navy); font-family: var(--cond); }
 
     /* ── NAV ── */
@@ -90,11 +91,20 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem 2rem;
     }
+    .shorts-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem 2rem;
+    }
     .video-wrap {
       position: relative;
       padding-bottom: 56.25%;
       background: #f2f2f2;
       margin-bottom: .7rem;
+    }
+    .video-wrap.vertical {
+      padding-bottom: 177.78%;
     }
     .video-wrap iframe {
       position: absolute; inset: 0;
@@ -105,6 +115,7 @@
       display: flex;
       align-items: baseline;
       justify-content: space-between;
+      gap: .5rem;
     }
     .vcard-title {
       font-family: var(--serif);
@@ -118,6 +129,7 @@
       letter-spacing: .12em;
       text-transform: uppercase;
       color: var(--muted);
+      white-space: nowrap;
     }
 
     /* ── SOBRE ── */
@@ -199,11 +211,7 @@
       line-height: 1.2;
       margin-bottom: 3rem;
     }
-    /* "juntos?" na mesma cor do restante do título */
-    .contato-hed em {
-      font-style: italic;
-      color: #fff;
-    }
+    .contato-hed em { font-style: italic; color: #fff; }
     .contato-list { display: flex; flex-direction: column; }
     .cl {
       display: flex;
@@ -265,14 +273,31 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      nav, #hero, #works, #sobre, #contato, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      nav { padding: 1.2rem 1.2rem; }
       .nav-name img { height: 48px; }
-      .nav-links { gap: 1.5rem; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: .68rem; }
+
+      #hero { padding: 0 1.2rem 1rem; }
+
+      #works { padding: 2rem 1.2rem; }
       .works-grid { grid-template-columns: 1fr; }
-      #sobre { grid-template-columns: 1fr; gap: 1.5rem; }
+
+      /* shorts: 2 colunas em vez de 4 */
+      .shorts-grid { grid-template-columns: repeat(2, 1fr); }
+
+      #sobre {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 3rem 1.2rem;
+      }
       .sobre-body { flex-direction: column; }
+      .sobre-foto { width: 90px; height: 90px; }
+
       #contato { padding: 4rem 1.2rem; }
-      .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      footer { padding: 1.5rem 1.2rem; }
     }
   </style>
 </head>
@@ -309,7 +334,7 @@
 
       <div class="vcard">
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/5L2Vk_kP_zo?si=mUzrV3a_myVms86H" title="O Estranho Mundo de Henry Darger"
+          <iframe src="https://www.youtube.com/embed/5L2Vk_kP_zo" title="O Estranho Mundo de Henry Darger"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="vcard-info">
@@ -320,21 +345,21 @@
 
       <div class="vcard">
         <div class="video-wrap">
-          <iframe src="https://youtube.com/embed/TyuT89hlfhY?si=MClvSXak02Sq4bYk" title="Free Willy"
+          <iframe src="https://www.youtube.com/embed/TyuT89hlfhY" title="Free Willy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="vcard-info">
-          <span class="vcard-title">A verdadeira história de 'Free Willy'"</span>
+          <span class="vcard-title">A verdadeira história de 'Free Willy'</span>
           <span class="vcard-cat">Documentário</span>
         </div>
       </div>
 
-      <!-- 4 vídeos verticais -->
-      <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem;">
+      <!-- 4 shorts verticais -->
+      <div class="shorts-grid">
 
         <div class="vcard">
-          <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://youtube.com/embed/QKpAV-XppEI" title="Vídeo 3"
+          <div class="video-wrap vertical">
+            <iframe src="https://www.youtube.com/embed/QKpAV-XppEI" title="Yukio Mishima"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
@@ -344,19 +369,19 @@
         </div>
 
         <div class="vcard">
-          <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://youtube.com/embed/0zjmjJIz-ZY" title="Vídeo 4"
+          <div class="video-wrap vertical">
+            <iframe src="https://www.youtube.com/embed/0zjmjJIz-ZY" title="Arranha-céu SP"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
-            <span class="vcard-title">O arranha-céu que São Paulo "quase" teve</span>
+            <span class="vcard-title">O arranha-céu que SP "quase" teve</span>
             <span class="vcard-cat">Short</span>
           </div>
         </div>
 
         <div class="vcard">
-          <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://youtube.com/embed/9ceZp5QrrTE?" title="Vídeo 5"
+          <div class="video-wrap vertical">
+            <iframe src="https://www.youtube.com/embed/9ceZp5QrrTE" title="21 Filmes"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
@@ -366,8 +391,8 @@
         </div>
 
         <div class="vcard">
-          <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://youtube.com/embed/Bn76p5Z7Ia4?feature=share" title="Vídeo 6"
+          <div class="video-wrap vertical">
+            <iframe src="https://www.youtube.com/embed/Bn76p5Z7Ia4" title="Origem dos animes"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
@@ -387,8 +412,8 @@
       <img src="jornalista_azul.png" alt="Foto de perfil" class="sobre-foto" />
       <div>
         <h2 class="sobre-hed">Jornalista.<br/><em>Editor de vídeo.</em></h2>
-        <p class="sobre-p">          
-          Sou jornalista com quase 20 anos de experiência e editor de vídeo. Combino narrativa editorial com técnica audiovisuaa. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.
+        <p class="sobre-p">
+          Sou jornalista com quase 20 anos de experiência e editor de vídeo. Combino narrativa editorial com técnica audiovisual. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.
         </p>
         <div class="sobre-tags">
           <span class="tag">Premiere Pro</span>
@@ -418,7 +443,7 @@
           <span class="cl-val">@jornalistaPERDIDO</span>
           <span class="cl-arrow">↗</span>
         </a>
-        <a href="https://www.instagram.com/jornalistaperdido/" class="cl">
+        <a href="https://www.instagram.com/jornalistaperdido/" target="_blank" class="cl">
           <span class="cl-label">Instagram</span>
           <span class="cl-val">@jornalistaperdido</span>
           <span class="cl-arrow">↗</span>
@@ -435,6 +460,9 @@
     </a>
     <p class="footer-copy">© 2025</p>
   </footer>
+
+</body>
+</html>
 
 </body>
 </html>
