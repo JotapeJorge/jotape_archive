@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jornalista Perdido</title>
+  <title>Jotapê Jorge</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Merriweather:wght@300;400;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -21,6 +21,7 @@
       font-family: 'Playfair Display', Georgia, serif;
       font-style: italic;
     }
+
     body { background: #fff; color: var(--navy); font-family: var(--cond); }
 
     /* ── NAV ── */
@@ -36,7 +37,7 @@
       align-items: center;
     }
     .nav-name img {
-      height: 40px;
+      height: 80px;
       width: auto;
       display: block;
     }
@@ -88,7 +89,6 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem 2rem;
     }
-    .vcard {}
     .video-wrap {
       position: relative;
       padding-bottom: 56.25%;
@@ -148,7 +148,6 @@
       gap: 2rem;
       align-items: flex-start;
     }
-    .sobre-body {}
     .sobre-hed {
       font-family: var(--serif);
       font-size: clamp(1.6rem, 2.5vw, 2.2rem);
@@ -186,7 +185,10 @@
       padding: 6rem 2.5rem;
     }
     .contato-grid {
-      max-width: 600px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
     }
     .contato-hed {
       font-family: var(--serif);
@@ -196,7 +198,11 @@
       line-height: 1.2;
       margin-bottom: 3rem;
     }
-    .contato-hed em { font-style: italic; color: #fff; }
+    /* "juntos?" na mesma cor do restante do título */
+    .contato-hed em {
+      font-style: italic;
+      color: #fff;
+    }
     .contato-list { display: flex; flex-direction: column; }
     .cl {
       display: flex;
@@ -221,57 +227,6 @@
     }
     .cl-arrow { color: rgba(255,255,255,.25); }
 
-    /* form */
-    form { display: flex; flex-direction: column; gap: 1.4rem; }
-    label {
-      display: block;
-      font-size: .62rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.35);
-      margin-bottom: .35rem;
-    }
-    input, textarea, select {
-      width: 100%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid rgba(255,255,255,.15);
-      color: #fff;
-      padding: .6rem 0;
-      font-family: var(--cond);
-      font-size: .9rem;
-      font-weight: 400;
-      outline: none;
-      transition: border-color .2s;
-      -webkit-appearance: none;
-    }
-    input::placeholder, textarea::placeholder { color: rgba(255,255,255,.2); }
-    input:focus, textarea:focus, select:focus { border-bottom-color: rgba(255,255,255,.5); }
-    select option { background: var(--navy); }
-    textarea { min-height: 90px; resize: none; }
-    .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    .btn-send {
-      align-self: flex-start;
-      padding: .75rem 2rem;
-      background: transparent;
-      color: rgba(255,255,255,.7);
-      border: 1px solid rgba(255,255,255,.25);
-      font-family: var(--cond);
-      font-size: .72rem;
-      font-weight: 600;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      cursor: pointer;
-      transition: all .2s;
-    }
-    .btn-send:hover { background: #fff; color: var(--navy); border-color: #fff; }
-    .form-ok {
-      display: none;
-      font-size: .8rem;
-      color: rgba(255,255,255,.5);
-    }
-
     /* ── FOOTER ── */
     footer {
       background: #111e2b;
@@ -281,7 +236,9 @@
       justify-content: space-between;
     }
     .footer-name {
-      display: flex; align-items: center; gap: .6rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
       text-decoration: none;
     }
     .footer-name .fn-serif {
@@ -294,7 +251,8 @@
       font-family: var(--cond);
       font-size: .95rem;
       font-weight: 400;
-      letter-spacing: .06em;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       color: rgba(255,255,255,.3);
     }
     .footer-copy {
@@ -306,14 +264,14 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 700px) {
-      nav, #hero, #works, #sobre, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
-      .nav-name img { height: 28px; } /* menor em mobile */
+      nav, #hero, #works, #sobre, #contato, footer { padding-left: 1.2rem; padding-right: 1.2rem; }
+      .nav-name img { height: 48px; }
       .nav-links { gap: 1.5rem; }
       .works-grid { grid-template-columns: 1fr; }
       #sobre { grid-template-columns: 1fr; gap: 1.5rem; }
+      .sobre-body { flex-direction: column; }
       #contato { padding: 4rem 1.2rem; }
       .contato-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .form-2col { grid-template-columns: 1fr; gap: 1.4rem; }
     }
   </style>
 </head>
@@ -322,8 +280,7 @@
   <!-- NAV -->
   <nav>
     <a href="#" class="nav-name">
-      <!-- Troque "logo.png" pelo nome do seu arquivo de imagem -->
-      <img src="logo.png" alt="Jornalista Perdido" />
+      <img src="cabeçalho_site.png" alt="Jotapê Jorge" />
     </a>
     <ul class="nav-links">
       <li><a href="#works">Portfólio</a></li>
@@ -336,8 +293,8 @@
   <section id="hero">
     <div class="hero-video">
       <iframe
-        src="https://www.youtube.com/embed/V79MC4N-EH4"
-        title="Jornalista Perdido"
+        src="https://youtu.be/k7Kv1ByiSuU"
+        title="Jotapê Jorge"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen>
       </iframe>
@@ -351,75 +308,74 @@
 
       <div class="vcard">
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 1"
+          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="O Estranho Mundo de Henry Darger"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="vcard-info">
-          <span class="vcard-title">Título do vídeo</span>
-          <span class="vcard-cat">Documentário</span>
+          <span class="vcard-title">O estranho mundo de Henry Darger</span>
+          <span class="vcard-cat">Vídeo-Ensaio</span>
         </div>
       </div>
 
       <div class="vcard">
         <div class="video-wrap">
-          <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 2"
+          <iframe src="https://youtu.be/TyuT89hlfhY" title="Free Willy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
         <div class="vcard-info">
-          <span class="vcard-title">Título do vídeo</span>
-          <span class="vcard-cat">Reportagem</span>
+          <span class="vcard-title">A verdadeira história de 'Free Willy'"</span>
+          <span class="vcard-cat">Documentário</span>
         </div>
       </div>
 
-      <!-- 4 vídeos verticais ocupando as 2 colunas restantes -->
+      <!-- 4 vídeos verticais -->
       <div style="grid-column: 1 / -1; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem 2rem;">
 
         <div class="vcard">
           <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 3"
+            <iframe src="https://youtube.com/shorts/QKpAV-XppEI?feature=share" title="Vídeo 3"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
-            <span class="vcard-title">Título</span>
+            <span class="vcard-title">Yukio Mishima</span>
             <span class="vcard-cat">Short</span>
           </div>
         </div>
 
         <div class="vcard">
           <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 4"
+            <iframe src="https://youtube.com/shorts/0zjmjJIz-ZY?feature=share" title="Vídeo 4"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
-            <span class="vcard-title">Título</span>
+            <span class="vcard-title">O arranha-céu que São Paulo "quase" TV</span>
             <span class="vcard-cat">Short</span>
           </div>
         </div>
 
         <div class="vcard">
           <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 5"
+            <iframe src="https://youtube.com/shorts/9ceZp5QrrTE?feature=share" title="Vídeo 5"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
-            <span class="vcard-title">Título</span>
+            <span class="vcard-title">21 Filmes que explicam o Século 21</span>
             <span class="vcard-cat">Short</span>
           </div>
         </div>
 
         <div class="vcard">
           <div class="video-wrap" style="padding-bottom: 177.78%;">
-            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Vídeo 6"
+            <iframe src="https://youtube.com/shorts/Bn76p5Z7Ia4?feature=share" title="Vídeo 6"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
           <div class="vcard-info">
-            <span class="vcard-title">Título</span>
+            <span class="vcard-title">A origem bizarra dos animes</span>
             <span class="vcard-cat">Short</span>
           </div>
         </div>
 
       </div>
-
     </div>
   </section>
 
@@ -427,42 +383,45 @@
   <section id="sobre">
     <p class="sobre-label">Sobre</p>
     <div class="sobre-body">
-      <img src="foto.jpg" alt="Foto de perfil" class="sobre-foto" />
+      <img src="jornalista_azul.jpg" alt="Foto de perfil" class="sobre-foto" />
       <div>
         <h2 class="sobre-hed">Jornalista.<br/><em>Editor de vídeo.</em></h2>
-      <p class="sobre-p">
-        Sou jornalista com [X] anos de experiência e editor de vídeo. Combino narrativa editorial com técnica audiovisual — cada corte tem intenção, cada vídeo tem uma história para contar. Disponível para projetos freelance.
-      </p>
-      <div class="sobre-tags">
-        <span class="tag">Premiere Pro</span>
-        <span class="tag">DaVinci Resolve</span>
-        <span class="tag">After Effects</span>
-        <span class="tag">Color Grading</span>
-        <span class="tag">Roteiro</span>
-      </div><!-- fim texto -->
-    </div><!-- fim sobre-body -->
-  </section><!-- fim sobre -->
+        <p class="sobre-p">          
+          Sou jornalista com quase 20 anos de experiência e editor de vídeo. Combino narrativa editorial com técnica audiovisuaa. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.
+        </p>
+        <div class="sobre-tags">
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">DaVinci Resolve</span>
+          <span class="tag">After Effects</span>
+          <span class="tag">Color Grading</span>
+          <span class="tag">Roteiro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
   <section id="contato">
     <div class="contato-grid">
       <div>
         <h2 class="contato-hed">Vamos trabalhar<br/><em>juntos?</em></h2>
-        <div class="contato-list">
-          <a href="/cdn-cgi/l/email-protection#5f2c3a2a3a323e36331f3a323e3633713c3032" class="cl">
-            <span class="cl-label">E-mail</span>
-            <span class="cl-val"><span class="__cf_email__" data-cfemail="a2d1c7d7c7cfc3cbcee2c7cfc3cbce8cc1cdcf">[email&#160;protected]</span></span>
-            <span class="cl-arrow">↗</span>
-          </a>
-          <a href="https://youtube.com/@jornalistaPERDIDO" target="_blank" class="cl">
-            <span class="cl-label">YouTube</span>
-            <span class="cl-val">@jornalistaPERDIDO</span>
-            <span class="cl-arrow">↗</span>
-          </a>
-          <a href="#" class="cl">
-            <span class="cl-label">Instagram</span>
-            <span class="cl-val">@jornalistaperdido</span>
-            <span class="cl-arrow">↗</span>
-          </a>
-        </div>
+      </div>
+      <div class="contato-list">
+        <a href="mailto:jp.jorge89@email.com" class="cl">
+          <span class="cl-label">E-mail</span>
+          <span class="cl-val">jp.jorge89@email.com</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://youtube.com/@jornalistaPERDIDO" target="_blank" class="cl">
+          <span class="cl-label">YouTube</span>
+          <span class="cl-val">@jornalistaPERDIDO</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://www.instagram.com/jornalistaperdido/" class="cl">
+          <span class="cl-label">Instagram</span>
+          <span class="cl-val">@jornalistaperdido</span>
+          <span class="cl-arrow">↗</span>
+        </a>
       </div>
     </div>
   </section>
@@ -476,6 +435,5 @@
     <p class="footer-copy">© 2025</p>
   </footer>
 
-  <script>
-    // reservado para futuras interações
-  </script>
+</body>
+</html>
