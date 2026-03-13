@@ -339,8 +339,8 @@
 
   <!-- HERO -->
   <section id="hero">
-    <div class="video-wrap" style="padding-bottom:56.25%;" data-id="k7Kv1ByiSuU">
-      <div class="yt-facade" style="background-image:url('thumbnail.png')">
+    <div class="video-wrap" style="padding-bottom:56.25%;" data-id="R_FvvL7IE-Y">
+      <div class="yt-facade" style="background-image:url('thumbnail.jpg')">
         <div class="yt-play"></div>
       </div>
     </div>
@@ -487,6 +487,13 @@
   </footer>
 
   <script>
+    // inicializa hero facade ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      const heroWrap = document.querySelector('#hero .video-wrap');
+      const facade = heroWrap.querySelector('.yt-facade');
+      if (facade) facade.style.backgroundImage = `url('${heroThumbPT}')`;
+    });
+
     // facade click handler
     document.querySelectorAll('.video-wrap[data-id]').forEach(wrap => {
       wrap.addEventListener('click', function() {
