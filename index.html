@@ -361,7 +361,7 @@
 
       <!-- V8 -->
       <div class="vcard pg-v8" data-id="VIDEO_ID_1">
-        <div class="yt-facade" style="background-image:url('thumb1.jpg')"></div>
+        <div class="yt-facade" style="background-image:url(')"></div>
         <div class="yt-play"></div>
         <div class="card-overlay">
           <span class="vcard-title">Novo vídeo 1</span>
@@ -413,5 +413,149 @@
     });
   </script>
 
+  <!-- SOBRE -->
+  <section id="sobre">
+    <p class="sobre-label">Sobre</p>
+    <div class="sobre-body">
+      <img src="jornalista_azul.png" alt="Foto de perfil" class="sobre-foto" />
+      <div>
+        <h2 class="sobre-hed">Jornalista<span class="dot">.</span><br/><em>Editor de vídeo<span class="dot">.</span></em></h2>
+        <p class="sobre-p">
+          <b>Jotapê Jorge</b> é jornalista com quase 20 anos de experiência e editor de vídeo. Narrativa editorial com técnica audiovisual. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.
+        </p>
+        <div class="sobre-tags">
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">DaVinci Resolve</span>
+          <span class="tag">After Effects</span>
+          <span class="tag">Color Grading</span>
+          <span class="tag">Roteiro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="contato-grid">
+      <div>
+        <h2 class="contato-hed">Vamos trabalhar<br/><em>juntos?</em></h2>
+      </div>
+      <div class="contato-list">
+        <a href="mailto:jp.jorge89@gmail.com" class="cl">
+          <span class="cl-label">E-mail</span>
+          <span class="cl-val">jp.jorge89@gmail.com</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://youtube.com/@jornalistaPERDIDO" target="_blank" class="cl">
+          <span class="cl-label">YouTube</span>
+          <span class="cl-val">@jornalistaPERDIDO</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://www.instagram.com/jornalistaperdido/" target="_blank" class="cl">
+          <span class="cl-label">Instagram</span>
+          <span class="cl-val">@jornalistaperdido</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-name">
+      <span class="fn-serif">Jotapê</span>
+      <span class="fn-sans">Jorge</span>
+    </a>
+    <p class="footer-copy">© 2025</p>
+  </footer>
+ 
+  <script>
+    // IDs e thumbnails do vídeo de apresentação (v1)
+    const heroIdPT  = 'R_FvvL7IE-Y';
+    const heroIdEN  = 'aSyj1bPddP4';
+    const heroThumbPT = 'thumbnail.jpg';
+    const heroThumbEN = 'thumbnailEN.jpg';
+ 
+    // click → embed
+    document.querySelectorAll('.vcard[data-id]').forEach(card => {
+      card.addEventListener('click', function () {
+        const id = this.dataset.id;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        this.innerHTML = '';
+        this.appendChild(iframe);
+      });
+    });
+ 
+    // ── TRADUÇÃO ──
+    const translations = {
+      pt: {
+        nav: ['Portfólio', 'Sobre', 'Contato'],
+        titles: [
+          'Apresentação',
+          'Yukio Mishima',
+          'O arranha-céu que SP "quase" teve',
+          '21 Filmes que explicam o Século 21',
+          'A origem bizarra dos animes',
+          "A verdadeira história de 'Free Willy'",
+          'O estranho mundo de Henry Darger'
+        ],
+        sobreLabel: 'Sobre',
+        sobreHed: "Jotapê Jorge<span class='dot'>.</span></em>",
+        sobreP: 'É editor de vídeo com experiência em jornalismo, motion design e produção de conteúdo para mídias digitais. Atua com vídeo-ensaios, animação e fluxos de edição utilizando a suíte Adobe..',
+        contatoHed: 'Vamos trabalhar<br/><em>juntos?</em>',
+        clLabels: ['E-mail', 'YouTube', 'Instagram'],
+        langBtn: 'EN'
+      },
+      en: {
+        nav: ['Portfolio', 'About', 'Contact'],
+        titles: [
+          'Introduction',
+          'Yukio Mishima',
+          'The skyscraper São Paulo "almost" had',
+          '21 Films that explain the 21st Century',
+          'The bizarre origin of anime',
+          "The true story of 'Free Willy'",
+          'The strange world of Henry Darger'
+        ],
+        sobreLabel: 'About',
+        sobreHed: "Jotapê Jorge<span class='dot'>.</span></em>",
+        sobreP: 'Video editor from Brazil with a background in journalism, motion design, and content production for digital media. Experienced in video essays, animation, and editing workflows using Adobe Creative Suite.',
+        contatoHed: "Let's work<br/><em>together?</em>",
+        clLabels: ['E-mail', 'YouTube', 'Instagram'],
+        langBtn: 'PT'
+      }
+    };
+ 
+    let lang = 'pt';
+ 
+    function toggleLang() {
+      lang = lang === 'pt' ? 'en' : 'pt';
+      const t = translations[lang];
+ 
+      document.querySelector('.lang-btn').textContent = t.langBtn;
+      document.querySelectorAll('.nav-links a').forEach((a, i) => a.textContent = t.nav[i]);
+ 
+      // troca vídeo/thumbnail do card de apresentação (v1)
+      const v1 = document.querySelector('.pg-v1');
+      if (v1) {
+        v1.dataset.id = lang === 'en' ? heroIdEN : heroIdPT;
+        const facade = v1.querySelector('.yt-facade');
+        if (facade) facade.style.backgroundImage = `url('${lang === 'en' ? heroThumbEN : heroThumbPT}')`;
+      }
+ 
+      document.querySelectorAll('.vcard-title').forEach((el, i) => {
+        if (t.titles[i]) el.textContent = t.titles[i];
+      });
+ 
+      document.querySelector('.sobre-label').textContent = t.sobreLabel;
+      document.querySelector('.sobre-hed').innerHTML = t.sobreHed;
+      document.querySelector('.sobre-p').innerHTML = t.sobreP;
+      document.querySelector('.contato-hed').innerHTML = t.contatoHed;
+      document.querySelectorAll('.cl-label').forEach((el, i) => el.textContent = t.clLabels[i]);
+    }
+  </script>
 </body>
 </html>
