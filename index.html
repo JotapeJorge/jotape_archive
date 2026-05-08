@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="dingbat_azul_redondo.png" />
+  <title>Jotapê Jorge</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Merriweather:wght@300;400;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy: #1a2d40;
+      --blue: #003e6a;
+      --muted: #aaa;
+      --serif: 'Merriweather', Georgia, serif;
+      --italic: 'Playfair Display', Georgia, serif;
+      --cond: 'Barlow Condensed', sans-serif;
+    }
+
+    .hero-hed em, .sobre-hed em, .contato-hed em {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-style: italic;
+    }
+
+    html, body { overflow-x: hidden; }
+    body { background: #fff; color: var(--navy); font-family: var(--cond); }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2rem 2.5rem;
+    }
+    .nav-name {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+    .nav-name img {
+      height: 80px;
+      width: auto;
+      display: block;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--navy); }
+
+    /* ── HERO VIDEO ── */
+    #hero { padding: 0 2.5rem 1rem; }
+    .hero-caption {
+      margin-top: .8rem;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ── WORKS GRID ── */
+    #works { padding: 3rem 2.5rem; }
+    .works-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem 2rem;
+    }
+    .shorts-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem 2rem;
+    }
+    .video-wrap {
+      position: relative;
+      padding-bottom: 56.25%;
+      background: #f2f2f2;
+      margin-bottom: .7rem;
+      cursor: pointer;
+      overflow: hidden;
+    }
+    .video-wrap.vertical { padding-bottom: 177.78%; }
+    .video-wrap iframe {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      border: none;
+    }
+    .yt-facade {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      background-size: cover;
+      background-position: center;
+    }
+    .yt-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 56px; height: 56px;
+      background: rgba(0,0,0,.7);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s;
+    }
+    .yt-facade:hover .yt-play { background: #ff0000; }
+    .yt-play::after {
+      content: '';
+      border-style: solid;
+      border-width: 10px 0 10px 18px;
+      border-color: transparent transparent transparent #fff;
+      margin-left: 3px;
+    }
+    .vcard-info {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: .5rem;
+    }
+    .vcard-title {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-weight: 400;
+      color: var(--navy);
+    }
+    .vcard-cat {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+    }
+
+    /* ── SOBRE ── */
+    #sobre {
+      padding: 5rem 2.5rem;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      border-top: 1px solid #eee;
+    }
+    .sobre-label {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: .2rem;
+    }
+    .sobre-foto {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      display: block;
+      flex-shrink: 0;
+    }
+    .sobre-body {
+      display: flex;
+      gap: 2rem;
+      align-items: flex-start;
+    }
+    .sobre-hed {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+      color: #111;
+    }
+    .sobre-hed .dot { color: var(--blue); }
+    .sobre-hed em { font-style: italic; }
+    .sobre-p {
+      font-size: .9rem;
+      color: #777;
+      line-height: 1.9;
+      max-width: 520px;
+      margin-bottom: 1.8rem;
+    }
+    .sobre-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+    }
+    .tag {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border: 1px solid #e0e0e0;
+      padding: .25rem .7rem;
+    }
+
+    /* ── CONTATO ── */
+    #contato {
+      background: var(--navy);
+      padding: 6rem 2.5rem;
+    }
+    .contato-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .contato-hed {
+      font-family: var(--serif);
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-weight: 400;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 3rem;
+    }
+    .contato-hed em { font-style: italic; color: #fff; }
+    .contato-list { display: flex; flex-direction: column; }
+    .cl {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      text-decoration: none;
+      transition: border-color .2s;
+    }
+    .cl:hover { border-bottom-color: rgba(255,255,255,.3); }
+    .cl-label {
+      font-size: .65rem;
+      font-weight: 600;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.35);
+    }
+    .cl-val {
+      font-size: .9rem;
+      color: rgba(255,255,255,.7);
+    }
+    .cl-arrow { color: rgba(255,255,255,.25); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #111e2b;
+      padding: 1.8rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-name {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      text-decoration: none;
+    }
+    .footer-name .fn-serif {
+      font-family: var(--serif);
+      font-size: .95rem;
+      font-weight: 400;
+      color: rgba(255,255,255,.3);
+    }
+    .footer-name .fn-sans {
+      font-family: var(--cond);
+      font-size: .95rem;
+      font-weight: 400;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.3);
+    }
+    .footer-copy {
+      font-size: .62rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      color: rgba(255,255,255,.18);
+    }
+
+    .lang-btn {
+      font-family: var(--cond);
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      background: none;
+      border: 1px solid #ddd;
+      padding: .3rem .7rem;
+      cursor: pointer;
+      transition: color .2s, border-color .2s;
+    }
+    .lang-btn:hover { color: var(--navy); border-color: var(--navy); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 700px) {
+      nav {
+        padding: 1.2rem 1.2rem;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+      .nav-name img { height: 48px; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links a { font-size: .68rem; }
+      #hero { padding: 0 1.2rem 1rem; }
+      #works { padding: 2rem 1.2rem; }
+      .works-grid { grid-template-columns: 1fr; }
+      .vcard-title { font-size: .78rem; }
+      .shorts-grid { grid-template-columns: repeat(2, 1fr); }
+      #sobre { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.2rem; }
+      .sobre-body { flex-direction: column; }
+      .sobre-foto { width: 90px; height: 90px; }
+      #contato { padding: 4rem 1.2rem; }
+      .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      footer { padding: 1.5rem 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-name">
+      <img src="cabeçalho_site.png" alt="Jotapê Jorge" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#works">Portfólio</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="video-wrap" style="padding-bottom:56.25%;" data-id="R_FvvL7IE-Y">
+      <div class="yt-facade" style="background-image:url('thumbnail.jpg')">
+        <div class="yt-play"></div>
+      </div>
+    </div>
+    <p class="hero-caption">Editor de Vídeo & Jornalista</p>
+  </section>
+
+  <!-- WORKS -->
+  <section id="works">
+    <div class="works-grid">
+
+      <div class="vcard">
+        <div class="video-wrap" data-id="5L2Vk_kP_zo">
+          <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/5L2Vk_kP_zo/maxresdefault.jpg')">
+            <div class="yt-play"></div>
+          </div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-title">O estranho mundo de Henry Darger</span>
+          <span class="vcard-cat">Vídeo-Ensaio</span>
+        </div>
+      </div>
+
+      <div class="vcard">
+        <div class="video-wrap" data-id="TyuT89hlfhY">
+          <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/TyuT89hlfhY/maxresdefault.jpg')">
+            <div class="yt-play"></div>
+          </div>
+        </div>
+        <div class="vcard-info">
+          <span class="vcard-title">A verdadeira história de 'Free Willy'</span>
+          <span class="vcard-cat">Documentário</span>
+        </div>
+      </div>
+
+      <!-- 4 shorts verticais -->
+      <div class="shorts-grid">
+
+        <div class="vcard">
+          <div class="video-wrap vertical" data-id="QKpAV-XppEI">
+            <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/QKpAV-XppEI/maxresdefault.jpg')">
+              <div class="yt-play"></div>
+            </div>
+          </div>
+          <div class="vcard-info">
+            <span class="vcard-title">Yukio Mishima</span>
+            <span class="vcard-cat">Short</span>
+          </div>
+        </div>
+
+        <div class="vcard">
+          <div class="video-wrap vertical" data-id="0zjmjJIz-ZY">
+            <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/0zjmjJIz-ZY/maxresdefault.jpg')">
+              <div class="yt-play"></div>
+            </div>
+          </div>
+          <div class="vcard-info">
+            <span class="vcard-title">O arranha-céu que SP "quase" teve</span>
+            <span class="vcard-cat">Short</span>
+          </div>
+        </div>
+
+        <div class="vcard">
+          <div class="video-wrap vertical" data-id="9ceZp5QrrTE">
+            <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/9ceZp5QrrTE/maxresdefault.jpg')">
+              <div class="yt-play"></div>
+            </div>
+          </div>
+          <div class="vcard-info">
+            <span class="vcard-title">21 Filmes que explicam o Século 21</span>
+            <span class="vcard-cat">Short</span>
+          </div>
+        </div>
+
+        <div class="vcard">
+          <div class="video-wrap vertical" data-id="Bn76p5Z7Ia4">
+            <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/Bn76p5Z7Ia4/maxresdefault.jpg')">
+              <div class="yt-play"></div>
+            </div>
+          </div>
+          <div class="vcard-info">
+            <span class="vcard-title">A origem bizarra dos animes</span>
+            <span class="vcard-cat">Short</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <p class="sobre-label">Sobre</p>
+    <div class="sobre-body">
+      <img src="jornalista_azul.png" alt="Foto de perfil" class="sobre-foto" />
+      <div>
+        <h2 class="sobre-hed">Jornalista<span class="dot">.</span><br/><em>Editor de vídeo<span class="dot">.</span></em></h2>
+        <p class="sobre-p">
+          <b>Jotapê Jorge</b> é jornalista com quase 20 anos de experiência e editor de vídeo. Narrativa editorial com técnica audiovisual. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.
+        </p>
+        <div class="sobre-tags">
+          <span class="tag">Premiere Pro</span>
+          <span class="tag">DaVinci Resolve</span>
+          <span class="tag">After Effects</span>
+          <span class="tag">Color Grading</span>
+          <span class="tag">Roteiro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="contato-grid">
+      <div>
+        <h2 class="contato-hed">Vamos trabalhar<br/><em>juntos?</em></h2>
+      </div>
+      <div class="contato-list">
+           <a href="mailto:jp.jorge89@gmail.com" class="cl">
+          <span class="cl-label">E-mail</span>
+          <span class="cl-val">jp.jorge89@gmail.com</span></span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://youtube.com/@jornalistaPERDIDO" target="_blank" class="cl">
+          <span class="cl-label">YouTube</span>
+          <span class="cl-val">@jornalistaPERDIDO</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+        <a href="https://www.instagram.com/jornalistaperdido/" target="_blank" class="cl">
+          <span class="cl-label">Instagram</span>
+          <span class="cl-val">@jornalistaperdido</span>
+          <span class="cl-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <a href="#" class="footer-name">
+      <span class="fn-serif">Jotapê</span>
+      <span class="fn-sans">Jorge</span>
+    </a>
+    <p class="footer-copy">© 2025</p>
+  </footer>
+
+  <script>
+    // inicializa hero facade ao carregar
+    window.addEventListener('DOMContentLoaded', () => {
+      const heroWrap = document.querySelector('#hero .video-wrap');
+      const facade = heroWrap.querySelector('.yt-facade');
+      if (facade) facade.style.backgroundImage = `url('${heroThumbPT}')`;
+    });
+
+    // facade click handler
+    document.querySelectorAll('.video-wrap[data-id]').forEach(wrap => {
+      wrap.addEventListener('click', function() {
+        const id = this.dataset.id;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.style.cssText = 'position:absolute;inset:0;width:100%;height:100%;border:none;';
+        this.innerHTML = '';
+        this.appendChild(iframe);
+      });
+    });
+
+    // ── TRADUÇÃO ──
+    // Para trocar o vídeo em inglês, mude o ID abaixo:
+    const heroIdPT = 'R_FvvL7IE-Y';
+    const heroIdEN = 'aSyj1bPddP4'; // ← troque pelo ID do vídeo em inglês quando tiver
+    const heroThumbPT = 'thumbnail.jpg';
+    const heroThumbEN = 'thumbnailEN.jpg'; // ← troque por 'thumbnail-en.png' quando tiver
+
+    const translations = {
+      pt: {
+        nav: ['Portfólio', 'Sobre', 'Contato'],
+        caption: 'Editor de Vídeo & Jornalista',
+        titles: [
+          'O estranho mundo de Henry Darger',
+          "A verdadeira história de 'Free Willy'",
+          'Yukio Mishima',
+          'O arranha-céu que SP "quase" teve',
+          '21 Filmes que explicam o Século 21',
+          'A origem bizarra dos animes'
+        ],
+        cats: ['Vídeo-Ensaio', 'Documentário'],
+        sobreLabel: 'Sobre',
+        sobreHed: "Jornalista<span class='dot'>.</span><br/><em>Editor de vídeo<span class='dot'>.</span></em>",
+        sobreP: '<b> Jotapê Jorge</b> é editor de vídeo com experiência em jornalismo, motion design e produção de conteúdo para mídias digitais. Atua com vídeo-ensaios, animação e fluxos de edição utilizando Adobe.',
+        contatoHed: 'Vamos trabalhar<br/><em>juntos?</em>',
+        clLabels: ['E-mail', 'YouTube', 'Instagram'],
+        langBtn: 'EN'
+      },
+      en: {
+        nav: ['Portfolio', 'About', 'Contact'],
+        caption: 'Video Editor & Journalist',
+        titles: [
+          'The strange world of Henry Darger',
+          "The true story of 'Free Willy'",
+          'Yukio Mishima',
+          'The skyscraper São Paulo "almost" had',
+          '21 Films that explain the 21st Century',
+          'The bizarre origin of anime'
+        ],
+        cats: ['Video Essay', 'Documentary'],
+        sobreLabel: 'About',
+        sobreHed: "Journalist<span class='dot'>.</span><br/><em>Video editor<span class='dot'>.</span></em>",
+        sobreP: '<b>Jotapê Jorge</b> is a video editor from Brazil with a background in journalism, motion design, and content production for digital media. Experienced in video essays, animation, and editing workflows using Adobe Creative Suite.',
+        contatoHed: "Let's work<br/><em>together?</em>",
+        clLabels: ['E-mail', 'YouTube', 'Instagram'],
+        langBtn: 'PT'
+      }
+    };
+
+    let lang = 'pt';
+
+    function toggleLang() {
+      lang = lang === 'pt' ? 'en' : 'pt';
+      const t = translations[lang];
+      document.querySelector('.lang-btn').textContent = t.langBtn;
+      document.querySelectorAll('.nav-links a').forEach((a, i) => a.textContent = t.nav[i]);
+      const heroWrap = document.querySelector('#hero .video-wrap');
+      heroWrap.dataset.id = lang === 'en' ? heroIdEN : heroIdPT;
+      const facade = heroWrap.querySelector('.yt-facade');
+      if (facade) facade.style.backgroundImage = `url('${lang === 'en' ? heroThumbEN : heroThumbPT}')`;
+      document.querySelector('.hero-caption').textContent = t.caption;
+      document.querySelectorAll('.vcard-title').forEach((el, i) => el.textContent = t.titles[i]);
+      document.querySelectorAll('.vcard-cat').forEach((el, i) => { if (t.cats[i]) el.textContent = t.cats[i]; });
+      document.querySelector('.sobre-label').textContent = t.sobreLabel;
+      document.querySelector('.sobre-hed').innerHTML = t.sobreHed;
+      document.querySelector('.sobre-p').innerHTML = t.sobreP;
+      document.querySelector('.contato-hed').innerHTML = t.contatoHed;
+      document.querySelectorAll('.cl-label').forEach((el, i) => el.textContent = t.clLabels[i]);
+    }
+  </script>
+</body>
+</html>
