@@ -5,10 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/png" href="dingbat_azul_redondo.png" />
   <title>Jotapê Jorge</title>
+
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400&family=Merriweather:wght@300;400;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
- 
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     :root {
       --navy: #1a2d40;
       --blue: #003e6a;
@@ -17,32 +23,42 @@
       --italic: 'Playfair Display', Georgia, serif;
       --cond: 'Barlow Condensed', sans-serif;
     }
- 
+
     html, body { overflow-x: hidden; }
-    body { background: #fff; color: var(--navy); font-family: var(--cond); }
- 
-    /* ── NAV ── */
+
+    body {
+      background: #fff;
+      color: var(--navy);
+      font-family: var(--cond);
+    }
+
+    /* NAV */
+
     nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
       padding: 2rem 2.5rem;
     }
+
     .nav-name {
       text-decoration: none;
       display: flex;
       align-items: center;
     }
+
     .nav-name img {
       height: 80px;
       width: auto;
       display: block;
     }
+
     .nav-links {
       display: flex;
       gap: 2.5rem;
       list-style: none;
     }
+
     .nav-links a {
       font-size: .75rem;
       font-weight: 600;
@@ -52,34 +68,50 @@
       text-decoration: none;
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--navy); }
- 
-    /* ── PORTFOLIO GRID ── */
-    #works { padding: 0 2.5rem 3rem; }
- 
+
+    .nav-links a:hover {
+      color: var(--navy);
+    }
+
+    /* PORTFOLIO */
+
+    #works {
+      padding: 0 2.5rem 3rem;
+    }
+
     .portfolio-grid {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-auto-rows: calc((100vw - 9rem) * 0.169);
       gap: 1rem;
     }
- 
-    /* posicionamento de cada card */
-    .pg-v1 { grid-column: 1 / 4; grid-row: 1 / 3; } /* about me — destaque */
-    .pg-v2 { grid-column: 4 / 5; grid-row: 1 / 3; } /* short alto */
-    .pg-v3 { grid-column: 5 / 6; grid-row: 1 / 2; } /* short pequeno */
-    .pg-v4 { grid-column: 5 / 6; grid-row: 2 / 3; } /* short pequeno */
-    .pg-v5 { grid-column: 1 / 2; grid-row: 3 / 5; } /* short baixo */
-    .pg-v6 { grid-column: 2 / 3; grid-row: 3 / 5; } /* short baixo */
-    .pg-v7 { grid-column: 3 / 6; grid-row: 3 / 5; } /* vídeo destaque */
- 
-    /* ── VIDEO CARDS ── */
+
+    /* GRID */
+
+    .pg-v1 { grid-column: 1 / 4; grid-row: 1 / 3; }
+    .pg-v2 { grid-column: 4 / 5; grid-row: 1 / 3; }
+    .pg-v3 { grid-column: 5 / 6; grid-row: 1 / 2; }
+    .pg-v4 { grid-column: 5 / 6; grid-row: 2 / 3; }
+
+    .pg-v5 { grid-column: 1 / 2; grid-row: 3 / 5; }
+    .pg-v6 { grid-column: 2 / 3; grid-row: 3 / 5; }
+    .pg-v7 { grid-column: 3 / 6; grid-row: 3 / 5; }
+
+    /* NOVA ROW */
+
+    .pg-v8 { grid-column: 1 / 3; grid-row: 5 / 7; }
+    .pg-v9 { grid-column: 3 / 4; grid-row: 5 / 7; }
+    .pg-v10 { grid-column: 4 / 6; grid-row: 5 / 7; }
+
+    /* VIDEO CARDS */
+
     .vcard {
       position: relative;
       overflow: hidden;
       cursor: pointer;
       background: #f0f0f0;
     }
+
     .yt-facade {
       position: absolute;
       inset: 0;
@@ -87,7 +119,11 @@
       background-position: center;
       transition: transform .4s ease;
     }
-    .vcard:hover .yt-facade { transform: scale(1.04); }
+
+    .vcard:hover .yt-facade {
+      transform: scale(1.04);
+    }
+
     .vcard iframe {
       position: absolute;
       inset: 0;
@@ -95,19 +131,27 @@
       height: 100%;
       border: none;
     }
- 
+
     .yt-play {
       position: absolute;
-      top: 50%; left: 50%;
+      top: 50%;
+      left: 50%;
       transform: translate(-50%, -50%);
-      width: 48px; height: 48px;
+      width: 48px;
+      height: 48px;
       background: rgba(0,0,0,.65);
       border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: background .2s;
       pointer-events: none;
     }
-    .vcard:hover .yt-play { background: rgba(0,0,0,.85); }
+
+    .vcard:hover .yt-play {
+      background: rgba(0,0,0,.85);
+    }
+
     .yt-play::after {
       content: '';
       border-style: solid;
@@ -115,15 +159,22 @@
       border-color: transparent transparent transparent #fff;
       margin-left: 3px;
     }
+
     .pg-v1 .yt-play,
-    .pg-v7 .yt-play {
-      width: 60px; height: 60px;
+    .pg-v7 .yt-play,
+    .pg-v8 .yt-play,
+    .pg-v10 .yt-play {
+      width: 60px;
+      height: 60px;
     }
+
     .pg-v1 .yt-play::after,
-    .pg-v7 .yt-play::after {
+    .pg-v7 .yt-play::after,
+    .pg-v8 .yt-play::after,
+    .pg-v10 .yt-play::after {
       border-width: 12px 0 12px 20px;
     }
- 
+
     .card-overlay {
       position: absolute;
       inset: 0;
@@ -134,6 +185,7 @@
       padding: 1rem;
       pointer-events: none;
     }
+
     .vcard-title {
       font-family: var(--serif);
       font-size: .8rem;
@@ -141,240 +193,110 @@
       color: #fff;
       line-height: 1.4;
     }
+
     .pg-v1 .vcard-title,
-    .pg-v7 .vcard-title {
+    .pg-v7 .vcard-title,
+    .pg-v8 .vcard-title,
+    .pg-v10 .vcard-title {
       font-size: 1rem;
     }
- 
-    /* ── SOBRE ── */
-    #sobre {
-      padding: 5rem 2.5rem;
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 4rem;
-      border-top: 1px solid #eee;
-    }
-    .sobre-label {
-      font-size: .7rem;
-      font-weight: 600;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      padding-top: .2rem;
-    }
-    .sobre-foto {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      object-fit: cover;
-      display: block;
-      flex-shrink: 0;
-    }
-    .sobre-body {
-      display: flex;
-      gap: 2rem;
-      align-items: flex-start;
-    }
-    .sobre-hed {
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
-      font-weight: 400;
-      line-height: 1.3;
-      margin-bottom: 1.5rem;
-      color: #111;
-    }
-    .sobre-hed .dot { color: var(--blue); }
-    .sobre-hed em {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-    }
-    .sobre-p {
-      font-size: .9rem;
-      color: #777;
-      line-height: 1.9;
-      max-width: 520px;
-      margin-bottom: 1.8rem;
-    }
-    .sobre-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: .4rem;
-    }
-    .tag {
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      border: 1px solid #e0e0e0;
-      padding: .25rem .7rem;
-    }
- 
-    /* ── CONTATO ── */
-    #contato {
-      background: var(--navy);
-      padding: 6rem 2.5rem;
-    }
-    .contato-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 6rem;
-      align-items: start;
-    }
-    .contato-hed {
-      font-family: var(--serif);
-      font-size: clamp(2rem, 4vw, 3.5rem);
-      font-weight: 400;
-      color: #fff;
-      line-height: 1.2;
-      margin-bottom: 3rem;
-    }
-    .contato-hed em {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-style: italic;
-      color: #fff;
-    }
-    .contato-list { display: flex; flex-direction: column; }
-    .cl {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      text-decoration: none;
-      transition: border-color .2s;
-    }
-    .cl:hover { border-bottom-color: rgba(255,255,255,.3); }
-    .cl-label {
-      font-size: .65rem;
-      font-weight: 600;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.35);
-    }
-    .cl-val {
-      font-size: .9rem;
-      color: rgba(255,255,255,.7);
-    }
-    .cl-arrow { color: rgba(255,255,255,.25); }
- 
-    /* ── FOOTER ── */
-    footer {
-      background: #111e2b;
-      padding: 1.8rem 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .footer-name {
-      display: flex;
-      align-items: center;
-      gap: .4rem;
-      text-decoration: none;
-    }
-    .footer-name .fn-serif {
-      font-family: var(--serif);
-      font-size: .95rem;
-      font-weight: 400;
-      color: rgba(255,255,255,.3);
-    }
-    .footer-name .fn-sans {
-      font-family: var(--cond);
-      font-size: .95rem;
-      font-weight: 400;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,.3);
-    }
-    .footer-copy {
-      font-size: .62rem;
-      font-weight: 600;
-      letter-spacing: .1em;
-      color: rgba(255,255,255,.18);
-    }
- 
-    .lang-btn {
-      font-family: var(--cond);
-      font-size: .75rem;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      background: none;
-      border: 1px solid #ddd;
-      padding: .3rem .7rem;
-      cursor: pointer;
-      transition: color .2s, border-color .2s;
-    }
-    .lang-btn:hover { color: var(--navy); border-color: var(--navy); }
- 
-    /* ── RESPONSIVE ── */
+
+    /* RESPONSIVE */
+
     @media (max-width: 900px) {
+
       .portfolio-grid {
         grid-template-columns: repeat(3, 1fr);
         grid-auto-rows: calc((100vw - 5rem) * 0.28);
       }
+
       .pg-v1 { grid-column: 1 / 3; grid-row: 1 / 3; }
       .pg-v2 { grid-column: 3 / 4; grid-row: 1 / 3; }
       .pg-v3 { grid-column: 1 / 2; grid-row: 3 / 4; }
       .pg-v4 { grid-column: 2 / 3; grid-row: 3 / 4; }
+
       .pg-v5 { grid-column: 3 / 4; grid-row: 3 / 5; }
       .pg-v6 { grid-column: 1 / 2; grid-row: 4 / 6; }
       .pg-v7 { grid-column: 2 / 4; grid-row: 4 / 6; }
+
+      .pg-v8 { grid-column: 1 / 3; grid-row: 6 / 8; }
+      .pg-v9 { grid-column: 3 / 4; grid-row: 6 / 8; }
+      .pg-v10 { grid-column: 1 / 4; grid-row: 8 / 10; }
     }
- 
+
     @media (max-width: 600px) {
+
       nav {
         padding: 1.2rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 1rem;
       }
-      .nav-name img { height: 48px; }
-      .nav-links { gap: 1.2rem; }
-      .nav-links a { font-size: .68rem; }
-      #works { padding: 0 1.2rem 2rem; }
+
+      .nav-name img {
+        height: 48px;
+      }
+
+      .nav-links {
+        gap: 1.2rem;
+      }
+
+      .nav-links a {
+        font-size: .68rem;
+      }
+
+      #works {
+        padding: 0 1.2rem 2rem;
+      }
+
       .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-auto-rows: calc((100vw - 2.4rem - 1rem) * 0.56 / 2);
         gap: .6rem;
       }
+
       .pg-v1 { grid-column: 1 / 3; grid-row: 1 / 2; }
+
       .pg-v2 { grid-column: 1 / 2; grid-row: 2 / 4; }
+
       .pg-v3 { grid-column: 2 / 3; grid-row: 2 / 3; }
+
       .pg-v4 { grid-column: 2 / 3; grid-row: 3 / 4; }
+
       .pg-v5 { grid-column: 1 / 2; grid-row: 4 / 6; }
+
       .pg-v6 { grid-column: 2 / 3; grid-row: 4 / 6; }
+
       .pg-v7 { grid-column: 1 / 3; grid-row: 6 / 7; }
-      #sobre { grid-template-columns: 1fr; gap: 1.5rem; padding: 3rem 1.2rem; }
-      .sobre-body { flex-direction: column; }
-      .sobre-foto { width: 90px; height: 90px; }
-      #contato { padding: 4rem 1.2rem; }
-      .contato-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      footer { padding: 1.5rem 1.2rem; }
+
+      .pg-v8 { grid-column: 1 / 3; grid-row: 7 / 8; }
+
+      .pg-v9 { grid-column: 1 / 2; grid-row: 8 / 10; }
+
+      .pg-v10 { grid-column: 2 / 3; grid-row: 8 / 10; }
     }
   </style>
 </head>
+
 <body>
- 
-  <!-- NAV -->
+
   <nav>
     <a href="#" class="nav-name">
       <img src="cabeçalho_site.png" alt="Jotapê Jorge" />
     </a>
+
     <ul class="nav-links">
       <li><a href="#works">Portfólio</a></li>
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#contato">Contato</a></li>
-      <li><button class="lang-btn" onclick="toggleLang()">EN</button></li>
     </ul>
   </nav>
- 
-  <!-- PORTFOLIO -->
+
   <section id="works">
+
     <div class="portfolio-grid">
- 
-      <!-- V1: About me — destaque principal -->
+
+      <!-- V1 -->
       <div class="vcard pg-v1" data-id="R_FvvL7IE-Y">
         <div class="yt-facade" style="background-image:url('thumbnail.jpg')"></div>
         <div class="yt-play"></div>
@@ -382,8 +304,8 @@
           <span class="vcard-title">Apresentação</span>
         </div>
       </div>
- 
-      <!-- V2: Short alto (Yukio Mishima) -->
+
+      <!-- V2 -->
       <div class="vcard pg-v2" data-id="QKpAV-XppEI">
         <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/QKpAV-XppEI/maxresdefault.jpg')"></div>
         <div class="yt-play"></div>
@@ -391,8 +313,8 @@
           <span class="vcard-title">Yukio Mishima</span>
         </div>
       </div>
- 
-      <!-- V3: Short pequeno (SP arranha-céu) -->
+
+      <!-- V3 -->
       <div class="vcard pg-v3" data-id="0zjmjJIz-ZY">
         <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/0zjmjJIz-ZY/maxresdefault.jpg')"></div>
         <div class="yt-play"></div>
@@ -400,8 +322,8 @@
           <span class="vcard-title">O arranha-céu que SP "quase" teve</span>
         </div>
       </div>
- 
-      <!-- V4: Short pequeno (21 Filmes) -->
+
+      <!-- V4 -->
       <div class="vcard pg-v4" data-id="9ceZp5QrrTE">
         <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/9ceZp5QrrTE/maxresdefault.jpg')"></div>
         <div class="yt-play"></div>
@@ -409,8 +331,8 @@
           <span class="vcard-title">21 Filmes que explicam o Século 21</span>
         </div>
       </div>
- 
-      <!-- V5: Short baixo (A origem dos animes) -->
+
+      <!-- V5 -->
       <div class="vcard pg-v5" data-id="Bn76p5Z7Ia4">
         <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/Bn76p5Z7Ia4/maxresdefault.jpg')"></div>
         <div class="yt-play"></div>
@@ -418,8 +340,8 @@
           <span class="vcard-title">A origem bizarra dos animes</span>
         </div>
       </div>
- 
-      <!-- V6: Short baixo (Free Willy) -->
+
+      <!-- V6 -->
       <div class="vcard pg-v6" data-id="TyuT89hlfhY">
         <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/TyuT89hlfhY/maxresdefault.jpg')"></div>
         <div class="yt-play"></div>
@@ -427,8 +349,8 @@
           <span class="vcard-title">A verdadeira história de 'Free Willy'</span>
         </div>
       </div>
- 
-      <!-- V7: Vídeo destaque (Henry Darger) -->
+
+      <!-- V7 -->
       <div class="vcard pg-v7" data-id="5L2Vk_kP_zo">
         <div class="yt-facade" style="background-image:url('https://i.ytimg.com/vi/5L2Vk_kP_zo/maxresdefault.jpg')"></div>
         <div class="yt-play"></div>
@@ -437,181 +359,59 @@
         </div>
       </div>
 
-      <!-- NOVOS CARDS — adicionar logo após o V7 -->
-
-<!-- V8 -->
-<div class="vcard pg-v8" data-id="VIDEO_ID_1">
-  <div class="yt-facade" style="background-image:url('thumb1.jpg')"></div>
-  <div class="yt-play"></div>
-  <div class="card-overlay">
-    <span class="vcard-title">Novo vídeo 1</span>
-  </div>
-</div>
-
-<!-- V9 -->
-<div class="vcard pg-v9" data-id="VIDEO_ID_2">
-  <div class="yt-facade" style="background-image:url('thumb2.jpg')"></div>
-  <div class="yt-play"></div>
-  <div class="card-overlay">
-    <span class="vcard-title">Novo vídeo 2</span>
-  </div>
-</div>
-
-<!-- V10 -->
-<div class="vcard pg-v10" data-id="VIDEO_ID_3">
-  <div class="yt-facade" style="background-image:url('thumb3.jpg')"></div>
-  <div class="yt-play"></div>
-  <div class="card-overlay">
-    <span class="vcard-title">Novo vídeo 3</span>
-  </div>
-</div>
- 
-    </div>
-  </section>
- 
-  <!-- SOBRE -->
-  <section id="sobre">
-    <p class="sobre-label">Sobre</p>
-    <div class="sobre-body">
-      <img src="jornalista_azul.png" alt="Foto de perfil" class="sobre-foto" />
-      <div>
-        <h2 class="sobre-hed">Jornalista<span class="dot">.</span><br/><em>Editor de vídeo<span class="dot">.</span></em></h2>
-        <p class="sobre-p">
-          <b>Jotapê Jorge</b> é jornalista com quase 20 anos de experiência e editor de vídeo. Narrativa editorial com técnica audiovisual. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.
-        </p>
-        <div class="sobre-tags">
-          <span class="tag">Premiere Pro</span>
-          <span class="tag">DaVinci Resolve</span>
-          <span class="tag">After Effects</span>
-          <span class="tag">Color Grading</span>
-          <span class="tag">Roteiro</span>
+      <!-- V8 -->
+      <div class="vcard pg-v8" data-id="VIDEO_ID_1">
+        <div class="yt-facade" style="background-image:url('thumb1.jpg')"></div>
+        <div class="yt-play"></div>
+        <div class="card-overlay">
+          <span class="vcard-title">Novo vídeo 1</span>
         </div>
       </div>
-    </div>
-  </section>
- 
-  <!-- CONTATO -->
-  <section id="contato">
-    <div class="contato-grid">
-      <div>
-        <h2 class="contato-hed">Vamos trabalhar<br/><em>juntos?</em></h2>
+
+      <!-- V9 -->
+      <div class="vcard pg-v9" data-id="VIDEO_ID_2">
+        <div class="yt-facade" style="background-image:url('thumb2.jpg')"></div>
+        <div class="yt-play"></div>
+        <div class="card-overlay">
+          <span class="vcard-title">Novo vídeo 2</span>
+        </div>
       </div>
-      <div class="contato-list">
-        <a href="mailto:jp.jorge89@gmail.com" class="cl">
-          <span class="cl-label">E-mail</span>
-          <span class="cl-val">jp.jorge89@gmail.com</span>
-          <span class="cl-arrow">↗</span>
-        </a>
-        <a href="https://youtube.com/@jornalistaPERDIDO" target="_blank" class="cl">
-          <span class="cl-label">YouTube</span>
-          <span class="cl-val">@jornalistaPERDIDO</span>
-          <span class="cl-arrow">↗</span>
-        </a>
-        <a href="https://www.instagram.com/jornalistaperdido/" target="_blank" class="cl">
-          <span class="cl-label">Instagram</span>
-          <span class="cl-val">@jornalistaperdido</span>
-          <span class="cl-arrow">↗</span>
-        </a>
+
+      <!-- V10 -->
+      <div class="vcard pg-v10" data-id="VIDEO_ID_3">
+        <div class="yt-facade" style="background-image:url('thumb3.jpg')"></div>
+        <div class="yt-play"></div>
+        <div class="card-overlay">
+          <span class="vcard-title">Novo vídeo 3</span>
+        </div>
       </div>
+
     </div>
+
   </section>
- 
-  <!-- FOOTER -->
-  <footer>
-    <a href="#" class="footer-name">
-      <span class="fn-serif">Jotapê</span>
-      <span class="fn-sans">Jorge</span>
-    </a>
-    <p class="footer-copy">© 2025</p>
-  </footer>
- 
+
   <script>
-    // IDs e thumbnails do vídeo de apresentação (v1)
-    const heroIdPT  = 'R_FvvL7IE-Y';
-    const heroIdEN  = 'aSyj1bPddP4';
-    const heroThumbPT = 'thumbnail.jpg';
-    const heroThumbEN = 'thumbnailEN.jpg';
- 
-    // click → embed
     document.querySelectorAll('.vcard[data-id]').forEach(card => {
       card.addEventListener('click', function () {
+
         const id = this.dataset.id;
+
         const iframe = document.createElement('iframe');
+
         iframe.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+
+        iframe.allow =
+          'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+
         iframe.allowFullscreen = true;
+
         this.innerHTML = '';
+
         this.appendChild(iframe);
+
       });
     });
- 
-    // ── TRADUÇÃO ──
-    const translations = {
-      pt: {
-        nav: ['Portfólio', 'Sobre', 'Contato'],
-        titles: [
-          'Apresentação',
-          'Yukio Mishima',
-          'O arranha-céu que SP "quase" teve',
-          '21 Filmes que explicam o Século 21',
-          'A origem bizarra dos animes',
-          "A verdadeira história de 'Free Willy'",
-          'O estranho mundo de Henry Darger'
-        ],
-        sobreLabel: 'Sobre',
-        sobreHed: "Jornalista<span class='dot'>.</span><br/><em>Editor de vídeo<span class='dot'>.</span></em>",
-        sobreP: '<b>Jotapê Jorge</b> é jornalista com quase 20 anos de experiência e editor de vídeo. Narrativa editorial com técnica audiovisual. Cada corte tem intenção e cada vídeo tem uma história para contar (porque tudo tem uma história). Disponível para projetos freelance.',
-        contatoHed: 'Vamos trabalhar<br/><em>juntos?</em>',
-        clLabels: ['E-mail', 'YouTube', 'Instagram'],
-        langBtn: 'EN'
-      },
-      en: {
-        nav: ['Portfolio', 'About', 'Contact'],
-        titles: [
-          'Introduction',
-          'Yukio Mishima',
-          'The skyscraper São Paulo "almost" had',
-          '21 Films that explain the 21st Century',
-          'The bizarre origin of anime',
-          "The true story of 'Free Willy'",
-          'The strange world of Henry Darger'
-        ],
-        sobreLabel: 'About',
-        sobreHed: "Journalist<span class='dot'>.</span><br/><em>Video editor<span class='dot'>.</span></em>",
-        sobreP: '<b>Jotapê Jorge</b> is a journalist with nearly 20 years of experience and a video editor. Editorial storytelling meets audiovisual technique. Every cut is intentional and every video has a story to tell (because everything does). Available for freelance projects.',
-        contatoHed: "Let's work<br/><em>together?</em>",
-        clLabels: ['E-mail', 'YouTube', 'Instagram'],
-        langBtn: 'PT'
-      }
-    };
- 
-    let lang = 'pt';
- 
-    function toggleLang() {
-      lang = lang === 'pt' ? 'en' : 'pt';
-      const t = translations[lang];
- 
-      document.querySelector('.lang-btn').textContent = t.langBtn;
-      document.querySelectorAll('.nav-links a').forEach((a, i) => a.textContent = t.nav[i]);
- 
-      // troca vídeo/thumbnail do card de apresentação (v1)
-      const v1 = document.querySelector('.pg-v1');
-      if (v1) {
-        v1.dataset.id = lang === 'en' ? heroIdEN : heroIdPT;
-        const facade = v1.querySelector('.yt-facade');
-        if (facade) facade.style.backgroundImage = `url('${lang === 'en' ? heroThumbEN : heroThumbPT}')`;
-      }
- 
-      document.querySelectorAll('.vcard-title').forEach((el, i) => {
-        if (t.titles[i]) el.textContent = t.titles[i];
-      });
- 
-      document.querySelector('.sobre-label').textContent = t.sobreLabel;
-      document.querySelector('.sobre-hed').innerHTML = t.sobreHed;
-      document.querySelector('.sobre-p').innerHTML = t.sobreP;
-      document.querySelector('.contato-hed').innerHTML = t.contatoHed;
-      document.querySelectorAll('.cl-label').forEach((el, i) => el.textContent = t.clLabels[i]);
-    }
   </script>
+
 </body>
 </html>
